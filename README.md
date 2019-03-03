@@ -1,4 +1,4 @@
-[![Build Status](https://semaphoreci.com/api/v1/fegoa89/ipapi/branches/master/badge.svg)](https://semaphoreci.com/fegoa89/ipapi)
+[![Build Status](https://semaphoreci.com/api/v1/fegoa89/ipapi/branches/master/badge.svg)](https://semaphoreci.com/fegoa89/ipapi)[![GoDoc](https://godoc.org/github.com/fegoa89/ipapi?status.svg)](https://godoc.org/github.com/fegoa89/ipapi)
 
 # IPAPI
 Golang API wrapper that finds the location of an IP address using ipapi.co.
