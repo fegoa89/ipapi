@@ -2,6 +2,11 @@
 
 # IPAPI
 Golang API wrapper that finds the location of an IP address using ipapi.co.
+If you purchased a paid plan, export the API Key in the environment:
+
+```shell
+export IPAPI_KEY=123456asdqwe
+```
 
 ### FindLocation
 

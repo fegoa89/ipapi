@@ -7,6 +7,9 @@ import (
 	"fmt"
 	"io/ioutil"
 	"net/http"
+	"net/url"
+	"os"
+	"strings"
 )
 
 const baseURL string = "https://ipapi.co"
@@ -33,7 +36,9 @@ type ApiResponse struct {
 }
 
 func ClientLocation() (*ApiResponse, error) {
-	url := fmt.Sprintf(baseURL + "/json")
+	basicUrl := []string{fmt.Sprintf(baseURL + "/json")}
+	requestUrl := strings.Join(basicUrl, appendIpapiKey())
+	url := fmt.Sprintf(requestUrl)
 	response, err := performLookupRequest(url)
 	if err != nil {
 		return nil, err
@@ -43,7 +48,9 @@ func ClientLocation() (*ApiResponse, error) {
 }
 
 func FindLocation(ip string) (*ApiResponse, error) {
-	url := fmt.Sprintf(baseURL+"/%s/json", ip)
+	basicUrl := []string{fmt.Sprintf(baseURL+"/%s/json", ip)}
+	requestUrl := strings.Join(basicUrl, appendIpapiKey())
+	url := fmt.Sprintf(requestUrl)
 	response, err := performLookupRequest(url)
 	if err != nil {
 		return nil, err
@@ -85,4 +92,13 @@ func performRequest(req *http.Request) ([]byte, error) {
 	}
 
 	return body, nil
+}
+
+func appendIpapiKey() string {
+	ipapiKey, presentIpapiKey := os.LookupEnv("IPAPI_KEY")
+	if presentIpapiKey {
+		return "?key=" + url.PathEscape(ipapiKey)
+	}
+
+	return ""
 }
