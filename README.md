@@ -22,7 +22,7 @@ ipapi.FindLocation("178.13.214.11")
 Returns the complete location of the client (device) that’s making the request. You do not need to specify the IP address, it is inferred from the request.
 
 ```golang
-ipapi.ClientLocation("178.13.214.11")
+ipapi.ClientLocation()
 ```
 
 ### Usage
